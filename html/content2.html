@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đánh giá Polk Signa S4</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.7.1.min.js">
+    </script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.bundle.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        .content {
+            margin-top: 20px;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .separator {
+            border-bottom: 2px solid #007bff;
+            margin: 10px 0;
+        }
+        
+        .nav-link {
+            color: aliceblue;
+            transition: color 0.3s;
+        }
+        
+        .author {
+            font-style: italic;
+            color: gray;
+        }
+        
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            /* Màu nền khi hover */
+            border-radius: 5px;
+            /* Bo tròn góc */
+        }
+        /* Hoặc hiệu ứng nổi bật cho đường link */
+        
+        .nav-link:hover {
+            color: rgb(219, 174, 51);
+            /* Đổi màu chữ khi hover */
+            font-weight: bold;
+            /* Chữ đậm khi hover */
+            text-shadow: 1px 1px 2px black;
+            /* Tạo hiệu ứng bóng chữ */
+        }
+        
+        .fixed-phone-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 50px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #3909e7;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            cursor: pointer;
+            animation: ripple 2s infinite ease-in-out;
+            /* Hiệu ứng gợn sóng */
+        }
+        /* Định nghĩa hiệu ứng gợn sóng */
+        
+        @keyframes ripple {
+            0% {
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7), 0 0 0 10px rgba(76, 175, 80, 0.1), 0 0 0 20px rgba(76, 175, 80, 0.05);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(76, 175, 80, 0), 0 0 0 20px rgba(76, 175, 80, 0.1), 0 0 0 30px rgba(76, 175, 80, 0.05);
+            }
+            100% {
+                box-shadow: 0 0 0 20px rgba(76, 175, 80, 0), 0 0 0 30px rgba(76, 175, 80, 0.05), 0 0 0 40px rgba(76, 175, 80, 0.01);
+            }
+        }
+        
+        .fixed-icon {
+            position: fixed;
+            bottom: 100px;
+            right: 50px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #2b09ec;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            cursor: pointer;
+            animation: ripple 2s infinite ease-in-out;
+            /* Hiệu ứng gợn sóng */
+        }
+        /* Định nghĩa hiệu ứng gợn sóng */
+        
+        @keyframes ripple {
+            0% {
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7), 0 0 0 10px rgba(76, 175, 80, 0.1), 0 0 0 20px rgba(76, 175, 80, 0.05);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(76, 175, 80, 0), 0 0 0 20px rgba(76, 175, 80, 0.1), 0 0 0 30px rgba(76, 175, 80, 0.05);
+            }
+            100% {
+                box-shadow: 0 0 0 20px rgba(76, 175, 80, 0), 0 0 0 30px rgba(76, 175, 80, 0.05), 0 0 0 40px rgba(76, 175, 80, 0.01);
+            }
+        }
+        
+        .d-flex {
+            transition: color 0.3s ease, filter 0.3s ease;
+        }
+        /* Hiệu ứng hover cho Giỏ Hàng */
+        
+        .cart h5 {
+            color: black;
+            /* Màu chữ sẽ chuyển sang đỏ */
+        }
+        
+        .cart:hover h5 {
+            color: rgb(255, 0, 0);
+            /* Màu chữ sẽ chuyển sang đỏ */
+        }
+        
+        .cart:hover img {
+            filter: brightness(0) saturate(100%) invert(45%) sepia(50%) saturate(1000%) hue-rotate(0deg) brightness(50%);
+            /* Màu icon sẽ chuyển sang đỏ */
+        }
+        /* Hiệu ứng hover cho Tài Khoản */
+        
+        .account h5 {
+            color: black;
+        }
+        
+        .account:hover h5 {
+            color: rgb(255, 0, 0);
+        }
+        
+        .account:hover img {
+            filter: brightness(0) saturate(100%) invert(45%) sepia(50%) saturate(1000%) hue-rotate(180deg) brightness(50%);
+            /* Màu icon sẽ chuyển sang một màu khác */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="background-image: url(/img/background3.jpg);">
+        <a href="hotro.html">
+            <div class="fixed-icon" onclick="window.location.href='cart.html'">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+        </a>
+        <a href="hotro.html">
+            <div class="fixed-phone-icon" onclick="window.location.href='tel:+84123456789'">
+                <i class="fas fa-phone"></i>
+            </div>
+        </a>
+        <div class="row" style="background-color: rgb(52, 102, 209)">
+            <div class="col-3 mt-2">
+                <a href="home.html"> <img src="/img/logo.jpg" alt="" style="padding-left: 30px;padding-top: 5px;"></a>
+            </div>
+            <div class="col-5 mt-3">
+                <form class="d-flex" action="" style="margin-top: 20px;border-radius: 15px;">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <button class="btn btn-success" type="submit">Search</button>
+                </form>
+
+            </div>
+            <div class="col-4 mt-2">
+                <form action="" class="d-flex" style="margin-left: 20px;">
+                    <a href="thanhtoan.html" class="d-flex cart" style="text-decoration: none;">
+                        <img width="711" height="450" src="../img/giaohang.png" alt="" srcset="" style="width: 50px; height: 50px; margin-top: 20px; margin-left: 30px;">
+                        <h5 style=" margin-top: 30px;">Giỏ Hàng</h5>
+                    </a>
+                    <a href="login.html" class="d-flex account" style="text-decoration: none;">
+                        <img width="711" height="450" src="../img/account.png" alt="" srcset="" style="width: 50px; height: 50px; margin-top: 20px; margin-left: 30px;">
+                        <h5 style=" margin-top: 30px;">Tài Khoản</h5>
+                    </a>
+                </form>
+            </div>
+        </div>
+        <div class="row" style="background-color:  rgb(115, 155, 241);text-align: center;align-items: center;">
+            <div class="col-2"></div>
+            <div class="col-10">
+
+                <!-- Links -->
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gioithieu.html">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shopping.html">Sản Phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tintuc.html">Tin tức</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hotro.html">Hỗ trợ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sitemap.html">Site map</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="container content">
+            <h1>LOA ACNOS CS366 PLUS</h1>
+            <p class="author">Ngày đăng: 22/10/2024</p>
+
+            <div class="separator"></div>
+
+            <h2 class="section-title">Giới thiệu sản phẩm</h2>
+            <img src="/img/hinhcontent2.jpg" alt="">
+            <p>Loa Acnos CS366 Plus là sự lựa chọn hoàn hảo cho các hoạt động karaoke, giải trí gia đình, sự kiện và live stream nhờ vào thiết kế tiện lợi, công nghệ tiên tiến và công suất âm thanh lên đến 750W PMPO.</p>
+
+            <h2 class="section-title">Đặc điểm nổi bật</h2>
+            <img src="/img/hinhcontent2.2.jpg" alt="">
+            <ul>
+                <li>Thiết kế nhỏ gọn, sang trọng và phù hợp với mọi không gian.</li>
+                <li>Sử dụng Pin Lithium-ion, tiện lợi cho tiệc ngoài trời và trong nhà.</li>
+                <li>Công suất PMPO 750W, âm trầm mạnh mẽ, kết nối hàng ngàn bài hát chất lượng cao qua app CloudKaraoke.</li>
+                <li>Tích hợp vang số chỉnh cơ, phần mềm chỉnh âm thanh chuyên nghiệp cho người dùng khó tính.</li>
+            </ul>
+
+            <h2 class="section-title">Thiết kế</h2>
+            <img src="/img/hinhcontent2.2.3.jpg" alt="">
+            <p>Thiết kế của Loa Karaoke xách tay Acnos CS366 Plus thể hiện sự tinh tế và cổ điển trong mọi chi tiết. Với kích thước nhỏ gọn 405 x 185 x 200 mm, chiếc loa mini này dễ dàng mang theo và sử dụng ở mọi nơi mà không chiếm quá nhiều không gian.</p>
+            <p>Dù có kích thước nhỏ gọn, loa vẫn đảm bảo âm thanh mạnh mẽ và chất lượng cao. Pin Lithium-ion dung lượng lớn cho thời gian sử dụng dài mà không cần sạc thường xuyên.</p>
+
+            <h2 class="section-title">Kết nối đa dạng và tiện dụng</h2>
+            <p>Dàn âm thanh ACNOS CS366 Plus hỗ trợ nhiều tùy chọn kết nối như Bluetooth 5.0, Line In/Line Out, Mic/Guitar và Optical In, giúp bạn dễ dàng liên kết với nhiều thiết bị khác nhau. Ngoài ra, hệ thống còn đi kèm 2 micro UHF cao cấp, đảm bảo chất
+                lượng giọng hát rõ ràng, ổn định và không bị gián đoạn trong quá trình sử dụng.</p>
+
+            <h2 class="section-title">Âm thanh mạnh mẽ</h2>
+            <p>Công suất 150W RMS mang lại âm thanh sống động và rõ nét. Các hiệu ứng BOOST BASS, ECHO, DELAY, và REVERB tích hợp giúp tăng cường trải nghiệm âm thanh với âm bass mạnh mẽ và âm vang mềm mại.</p>
+
+            <h2 class="section-title">Công nghệ hiện đại</h2>
+            <p>Tích hợp vang số chỉnh cơ và ứng dụng thông minh, cho phép người dùng dễ dàng tùy chỉnh âm thanh theo ý thích. Hỗ trợ OTG (USB) Stereo live stream âm thanh chất lượng cao trên iOS và Android, giúp mang lại trải nghiệm âm thanh tốt nhất khi
+                phát trực tiếp.</p>
+
+            <h2 class="section-title">Chống hú FBX</h2>
+            <p>Công nghệ FBX chống hú được tích hợp trong loa ACNOS CS366 Plus giúp loại bỏ hiện tượng hú rít, bảo vệ loa khỏi các sự cố âm thanh không mong muốn. Nhờ đó, âm thanh luôn giữ được độ trong trẻo, không bị nhiễu, mang đến trải nghiệm nghe thoải
+                mái và dễ chịu hơn, đặc biệt là trong các buổi karaoke hoặc sự kiện đông người.</p>
+
+            <h2 class="section-title">Hát cùng CloudKaraoke</h2>
+            <p>Loa Karaoke xách tay Acnos CS366 Plus là một trung tâm giải trí đa năng với tích hợp phần mềm CloudKaraoke độc quyền của ACNOS. Với khả năng kết nối hàng ngàn bài hát, người dùng có thể thỏa sức lựa chọn và hát theo những ca khúc ưa thích
+                thông qua thiết bị di động.</p>
+            <p>Nếu người dùng không quen sử dụng app, Acnos CS366 Plus cũng hỗ trợ kết nối qua Youtube để có thể dễ dàng tận hưởng ca hát với những ca khúc yêu thích. Đi kèm với loa là đôi micro không dây cao cấp, giúp người dùng trải nghiệm karaoke chuyên
+                nghiệp ngay tại nhà.</p>
+
+            <h2 class="section-title">Thông số kỹ thuật</h2>
+            <div class="specs">
+                <p><strong>Tên sản phẩm:</strong> Loa di động Acnos CS366 Plus</p>
+                <p><strong>Công suất RMS:</strong> 150W</p>
+                <p><strong>Công suất PMPO:</strong> 750W</p>
+                <p><strong>Thời gian sử dụng pin:</strong> Lên đến 8 giờ (tùy theo mức âm lượng sử dụng)</p>
+                <p><strong>Loại pin:</strong> Lithium-ion</p>
+                <p><strong>Kết nối Bluetooth:</strong> Bluetooth 5.0</p>
+                <p><strong>Tính năng karaoke:</strong> Tích hợp 2 micro UHF cao cấp, hiệu ứng âm thanh ECHO, DELAY, REVERB</p>
+                <p><strong>Điều khiển:</strong> Ứng dụng điều khiển qua điện thoại (iOS & Android), nút điều chỉnh cơ</p>
+                <p><strong>Cổng kết nối:</strong> Line In/Out, Mic/Guitar, Optical In, USB OTG Stereo</p>
+                <p><strong>Số lượng driver:</strong> 2</p>
+                <p><strong>Chip âm thanh:</strong> Tích hợp chip xử lý âm thanh chất lượng cao</p>
+                <p><strong>Chống hú:</strong> FBX chống hú, bảo vệ loa</p>
+                <p><strong>Điều chỉnh âm thanh:</strong> Vang số chỉnh cơ kết hợp với ứng dụng tùy chỉnh nâng cao</p>
+            </div>
+
+            <h2 class="section-title">Địa chỉ bán hàng</h2>
+            <p>Loa Acnos CS366 Plus hiện đang được phân phối và bảo hành chính hãng tại Vua2hand. Để được mua hàng chính hãng với mức giá ưu đãi cùng nhiều chương trình khuyến mãi hấp dẫn, bạn có thể gọi đến hotline 0933 252 606 - 0909 152 606 hoặc ghé đến
+                showroom của SAIGON HD để được trải nghiệm trực tiếp chất lượng sản phẩm.</p>
+        </div>
+
+        <div class="row" style="background-color:rgb(101, 86, 240);color: rgb(229, 247, 247);padding-left: 50px;padding-top:10px ;">
+            <div class="col-4">
+                <h3>Thông tin liên hệ</h3>
+                <p>40/39 Lê Thị Hồng p17 Gò Vấp</p>
+                <p>Sđt:012345678</p>
+                <p>Email:Vua2hand@gmail.com</p>
+                <img src="/img/face.svg" alt="" style="width: 10%;">
+                <img src="/img/zalo.webp" alt="" style="width: 10%;padding-left: 5px;padding-top: 5px;">
+                <img src="/img/phone.png" alt="" style="width: 10%; padding-left: 5px;padding-top: 5px;">
+            </div>
+            <div class="col-4">
+                <H3>Hỗ trợ khách hàng</H3>
+                <p>Giới thiệu</p>
+                <p>Giỏ hàng</p>
+                <p>Hướng dẫn mua hàng</p>
+                <p>Hướng dẫn thanh toán</p>
+            </div>
+            <div class="col-4">
+                <h3>Chính sách</h3>
+                <p>Chính sách bảo hành</p>
+                <p>Chính sách đổi trả, hoàn tiền</p>
+                <p>Quy chế hoạt động</p>
+                <p>Chính sách bảo mật</p>
+            </div>
+        </div>
+        <div class="row" style="background-color:rgb(2, 22, 41);color: coral;">
+            <p style="text-align: center;padding-top: 10px;">Địa chỉ:40/39 Lê Thị Hồng p17 Gò Vấp </p>
+            <p style="text-align: center;">Đường dây nóng liên hệ:19001911 </p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vua2hand.com</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.7.1.min.js">
+    </script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        .d-flex {
+            transition: color 0.3s ease, filter 0.3s ease;
+        }
+        /* Hiệu ứng hover cho Giỏ Hàng */
+        
+        .cart h5 {
+            color: black;
+            /* Màu chữ sẽ chuyển sang đỏ */
+        }
+        
+        .cart:hover h5 {
+            color: rgb(255, 0, 0);
+            /* Màu chữ sẽ chuyển sang đỏ */
+        }
+        
+        .cart:hover img {
+            filter: brightness(0) saturate(100%) invert(45%) sepia(50%) saturate(1000%) hue-rotate(0deg) brightness(50%);
+            /* Màu icon sẽ chuyển sang đỏ */
+        }
+        /* Hiệu ứng hover cho Tài Khoản */
+        
+        .account h5 {
+            color: black;
+        }
+        
+        .account:hover h5 {
+            color: rgb(255, 0, 0);
+        }
+        
+        .account:hover img {
+            filter: brightness(0) saturate(100%) invert(45%) sepia(50%) saturate(1000%) hue-rotate(180deg) brightness(50%);
+            /* Màu icon sẽ chuyển sang một màu khác */
+        }
+        
+        .nav-link {
+            color: aliceblue;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: yellow;
+        }
+        
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            /* Màu nền khi hover */
+            border-radius: 5px;
+            /* Bo tròn góc */
+        }
+        /* Hoặc hiệu ứng nổi bật cho đường link */
+        
+        .nav-link:hover {
+            color: rgb(219, 174, 51);
+            /* Đổi màu chữ khi hover */
+            font-weight: bold;
+            /* Chữ đậm khi hover */
+            text-shadow: 1px 1px 2px black;
+            /* Tạo hiệu ứng bóng chữ */
+        }
+        
+        .fixed-phone-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 50px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #3909e7;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            cursor: pointer;
+            animation: ripple 2s infinite ease-in-out;
+            /* Hiệu ứng gợn sóng */
+        }
+        /* Định nghĩa hiệu ứng gợn sóng */
+        
+        @keyframes ripple {
+            0% {
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7), 0 0 0 10px rgba(76, 175, 80, 0.1), 0 0 0 20px rgba(76, 175, 80, 0.05);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(76, 175, 80, 0), 0 0 0 20px rgba(76, 175, 80, 0.1), 0 0 0 30px rgba(76, 175, 80, 0.05);
+            }
+            100% {
+                box-shadow: 0 0 0 20px rgba(76, 175, 80, 0), 0 0 0 30px rgba(76, 175, 80, 0.05), 0 0 0 40px rgba(76, 175, 80, 0.01);
+            }
+        }
+        
+        .fixed-icon {
+            position: fixed;
+            bottom: 100px;
+            right: 50px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #2b09ec;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            cursor: pointer;
+            animation: ripple 2s infinite ease-in-out;
+            /* Hiệu ứng gợn sóng */
+        }
+        /* Định nghĩa hiệu ứng gợn sóng */
+        
+        @keyframes ripple {
+            0% {
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7), 0 0 0 10px rgba(76, 175, 80, 0.1), 0 0 0 20px rgba(76, 175, 80, 0.05);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(76, 175, 80, 0), 0 0 0 20px rgba(76, 175, 80, 0.1), 0 0 0 30px rgba(76, 175, 80, 0.05);
+            }
+            100% {
+                box-shadow: 0 0 0 20px rgba(76, 175, 80, 0), 0 0 0 30px rgba(76, 175, 80, 0.05), 0 0 0 40px rgba(76, 175, 80, 0.01);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row" style="background-color:  rgb(52, 102, 209)">
+            <a href="hotro.html">
+                <div class="fixed-icon" onclick="window.location.href='cart.html'">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+            </a>
+            <a href="hotro.html">
+                <div class="fixed-phone-icon" onclick="window.location.href='tel:+84123456789'">
+                    <i class="fas fa-phone"></i>
+                </div>
+            </a>
+            <div class="col-3 mt-2">
+                <a href="home.html"> <img src="/img/logo.jpg" alt="" style="padding-left: 30px;padding-top: 5px;"></a>
+            </div>
+            <div class="col-5 mt-3">
+                <form class="d-flex" action="" style="margin-top: 20px;border-radius: 15px;">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <button class="btn btn-success" type="submit">Search</button>
+                </form>
+            </div>
+            <div class="col-4 mt-2">
+                <form action="" class="d-flex" style="margin-left: 20px;">
+                    <a href="shopping.html" class="d-flex" style="text-decoration: none;">
+                        <img src="../img/giaohang.png" alt="" style="width: 50px;height: 50px;margin-top: 20px;margin-left: 30px;">
+                        <h5 style="color:rgb(19, 3, 4);margin-top: 30px;">Giỏ Hàng</h5>
+                    </a>
+                    <div id="account-link" class="d-flex" style="text-decoration: none;">
+                        <!-- Nội dung tài khoản sẽ được cập nhật bởi JavaScript -->
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script>
+            if (storedUserInfo && storedUserInfo.username === loginUsername && storedUserInfo.password === loginPassword) {
+                loginErrorSpan.textContent = ""; // Xóa thông báo lỗi
+                alert('Đăng nhập thành công! Chào mừng ' + storedUserInfo.fullName);
+
+                // Lưu trạng thái đăng nhập và tên người dùng vào localStorage
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('loggedInUsername', storedUserInfo.username);
+
+                // Chuyển về trang home.html sau khi đăng nhập thành công
+                window.location.href = 'home.html';
+            }
+        </script>
+        <div class="row" style="background-color:rgb(115, 155, 241);text-align: center;align-items: center;">
+            <div class="col-2"></div>
+            <div class="col-10">
+
+                <!-- Links -->
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gioithieu.html">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shopping.html">Sản Phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tintuc.html">Tin tức</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hotro.html">Hỗ trợ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sitemap.html">Site map</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="row" style="background-image: url(/img/background3.jpg);">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <div class="container mt-5">
+                    <h2 id="registerHeader">Đăng Ký</h2>
+                    <form id="registrationForm">
+                        <div class="form-group">
+                            <label for="fullName">Họ và tên:</label>
+                            <input type="text" class="form-control" placeholder="Tran Van A" id="fullName" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Số điện thoại:</label>
+                            <input type="tel" class="form-control" placeholder="01234XXXXX" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Tên đăng nhập:</label>
+                            <input type="text" class="form-control" placeholder="Tran Van A" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Mật khẩu:</label>
+                            <input type="password" class="form-control" placeholder="*******" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Xác nhận mật khẩu:</label>
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="********" name="confirmPassword" required>
+                        </div>
+                        <span id="error" class="error"></span><br>
+                        <button type="submit" class="btn btn-danger">Đăng Ký</button>
+                        <button type="button" id="switchToLogin" class="btn btn-link">Đã có tài khoản? Đăng nhập</button>
+                    </form>
+
+                    <h2 class="mt-5" id="loginHeader" style="display: none;">Đăng Nhập</h2>
+                    <form id="loginForm" style="display: none;">
+                        <div class="form-group">
+                            <label for="loginUsername">Tên đăng nhập:</label>
+                            <input type="text" class="form-control" id="loginUsername" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Mật khẩu:</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <span id="loginError" class="error"></span><br>
+                        <button type="submit" class="btn btn-primary">Đăng Nhập</button>
+                        <button type="button" id="switchToRegister" class="btn btn-link">Chưa có tài khoản? Đăng ký</button>
+                    </form>
+                </div>
+
+
+                <script>
+                    // Xử lý form đăng ký
+                    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+                        event.preventDefault(); // Ngăn chặn hành động mặc định của form
+
+                        const fullName = document.getElementById('fullName').value;
+                        const phone = document.getElementById('phone').value;
+                        const username = document.getElementById('username').value;
+                        const password = document.getElementById('password').value;
+                        const confirmPassword = document.getElementById('confirmPassword').value;
+                        const errorSpan = document.getElementById('error');
+
+                        // Kiểm tra ký tự đặc biệt trong họ và tên (cho phép tiếng Việt có dấu)
+                        const nameRegex = /^([A-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐ]|[a-zàáâãèéêìíòóôõùúăđĩũơ])+([ '-][A-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐ]|[a-zàáâãèéêìíòóôõùúăđĩũơ])*$/;
+                        if (!nameRegex.test(fullName)) {
+                            errorSpan.textContent = "Họ và tên phải bắt đầu bằng chữ hoa và không được chứa ký tự đặc biệt!";
+                            return;
+                        }
+
+                        // Kiểm tra số điện thoại không chứa chữ cái
+                        const phoneRegex = /^[0-9]+$/;
+                        if (!phoneRegex.test(phone)) {
+                            errorSpan.textContent = "Số điện thoại không được chứa chữ cái!";
+                            return;
+                        }
+
+                        if (password !== confirmPassword) {
+                            errorSpan.textContent = "Mật khẩu không khớp! Vui lòng kiểm tra lại.";
+                        } else {
+                            errorSpan.textContent = ""; // Xóa thông báo lỗi
+
+                            // Lưu thông tin người dùng vào localStorage
+                            const userInfo = {
+                                fullName: fullName,
+                                phone: phone,
+                                username: username,
+                                password: password
+                            };
+                            localStorage.setItem('userInfo', JSON.stringify(userInfo));
+                            alert('Đăng ký thành công! Vui lòng đăng nhập.');
+
+                            // Ẩn form đăng ký và tiêu đề "Đăng Ký"
+                            document.getElementById('registerHeader').style.display = 'none';
+                            document.getElementById('registrationForm').style.display = 'none';
+
+                            // Hiện form đăng nhập và tiêu đề "Đăng Nhập"
+                            document.getElementById('loginHeader').style.display = 'block';
+                            document.getElementById('loginForm').style.display = 'block';
+                        }
+                    });
+
+                    // Xử lý form đăng nhập
+                    document.getElementById('loginForm').addEventListener('submit', function(event) {
+                        event.preventDefault(); // Ngăn chặn hành động mặc định của form
+
+                        const loginUsername = document.getElementById('loginUsername').value;
+                        const loginPassword = document.getElementById('loginPassword').value;
+                        const loginErrorSpan = document.getElementById('loginError');
+
+                        // Lấy thông tin người dùng từ localStorage
+                        const storedUserInfo = JSON.parse(localStorage.getItem('userInfo'));
+
+                        if (storedUserInfo && storedUserInfo.username === loginUsername && storedUserInfo.password === loginPassword) {
+                            loginErrorSpan.textContent = ""; // Xóa thông báo lỗi
+                            alert('Đăng nhập thành công! Chào mừng ' + storedUserInfo.fullName);
+
+                            // Chuyển về trang home.html sau khi đăng nhập thành công
+                            window.location.href = 'home.html';
+                        } else {
+                            loginErrorSpan.textContent = "Tên đăng nhập hoặc mật khẩu không đúng!";
+                        }
+                    });
+
+                    // Sự kiện chuyển từ form Đăng ký sang form Đăng nhập
+                    document.getElementById('switchToLogin').addEventListener('click', function() {
+                        // Ẩn form đăng ký
+                        document.getElementById('registerHeader').style.display = 'none';
+                        document.getElementById('registrationForm').style.display = 'none';
+
+                        // Hiển thị form đăng nhập
+                        document.getElementById('loginHeader').style.display = 'block';
+                        document.getElementById('loginForm').style.display = 'block';
+                    });
+
+                    // Sự kiện chuyển từ form Đăng nhập sang form Đăng ký
+                    document.getElementById('switchToRegister').addEventListener('click', function() {
+                        // Ẩn form đăng nhập
+                        document.getElementById('loginHeader').style.display = 'none';
+                        document.getElementById('loginForm').style.display = 'none';
+
+                        // Hiển thị form đăng ký
+                        document.getElementById('registerHeader').style.display = 'block';
+                        document.getElementById('registrationForm').style.display = 'block';
+                    });
+                </script>
+                <script>
+                    function checkLoginStatus() {
+                        const storedUserInfo = JSON.parse(localStorage.getItem('userInfo'));
+                        const accountLink = document.getElementById('account-link');
+
+                        if (storedUserInfo) {
+                            // Người dùng đã đăng nhập, hiển thị tên đăng nhập và nút đăng xuất
+                            accountLink.innerHTML = `
+                                <img src="../img/account.png" alt="" style="width: 50px;height: 50px;margin-top: 20px;margin-left: 30px;">
+                                <h5 style="color:rgb(5, 6, 7);margin-top: 30px;">${storedUserInfo.username}</h5>
+                                <button class="btn btn-link" onclick="logout()" style="margin-top: 25px;">Đăng xuất</button>
+                            `;
+                        } else {
+                            // Người dùng chưa đăng nhập, hiển thị liên kết tới trang đăng nhập
+                            accountLink.innerHTML = `
+                                <a href="login.html" class="d-flex" style="text-decoration: none;">
+                                    <img src="../img/account.png" alt="" style="width: 50px;height: 50px;margin-top: 20px;margin-left: 30px;">
+                                    <h5 style="color:rgb(5, 6, 7);margin-top: 30px;">Tài Khoản</h5>
+                                </a>
+                            `;
+                        }
+                    }
+
+                    function logout() {
+                        // Xóa thông tin người dùng khỏi localStorage và tải lại trang
+                        localStorage.removeItem('userInfo');
+                        alert("Bạn đã đăng xuất.");
+                        window.location.reload();
+                    }
+
+                    // Gọi hàm kiểm tra trạng thái đăng nhập khi tải trang
+                    document.addEventListener('DOMContentLoaded', checkLoginStatus);
+                </script>
+
+
+
+
+            </div>
+            <div class="col-3"></div>
+        </div>
+
+
+        <div class="row" style="background-color:  rgb(101, 86, 240);color: rgb(229, 247, 247);padding-left: 50px;padding-top:10px ;">
+            <div class="col-4">
+                <h3>Thông tin liên hệ</h3>
+                <p>40/39 Lê Thị Hồng p17 Gò Vấp</p>
+                <p>Sđt:012345678</p>
+                <p>Email:Vua2hand@gmail.com</p>
+                <img src="/img/face.svg" alt="" style="width: 10%;">
+                <img src="/img/zalo.webp" alt="" style="width: 10%;padding-left: 5px;padding-top: 5px;">
+                <img src="/img/phone.png" alt="" style="width: 10%; padding-left: 5px;padding-top: 5px;">
+            </div>
+            <div class="col-4">
+                <H3>Hỗ trợ khách hàng</H3>
+                <p>Giới thiệu</p>
+                <p>Giỏ hàng</p>
+                <p>Hướng dẫn mua hàng</p>
+                <p>Hướng dẫn thanh toán</p>
+            </div>
+            <div class="col-4">
+                <h3>Chính sách</h3>
+                <p>Chính sách bảo hành</p>
+                <p>Chính sách đổi trả, hoàn tiền</p>
+                <p>Quy chế hoạt động</p>
+                <p>Chính sách bảo mật</p>
+            </div>
+        </div>
+        <div class="row" style="background-color: rgb(2, 22, 41);color: coral;">
+            <p style="text-align: center;padding-top: 10px;">Địa chỉ:40/39 Lê Thị Hồng p17 Gò Vấp </p>
+        </div>
+    </div>
+</body>
+
+</html>

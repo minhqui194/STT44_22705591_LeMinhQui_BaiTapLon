@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đánh giá Polk Signa S4</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.7.1.min.js">
+    </script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.bundle.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        .nav-link {
+            color: aliceblue;
+            transition: color 0.3s;
+        }
+        
+        .content {
+            margin-top: 20px;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .separator {
+            border-bottom: 2px solid #007bff;
+            margin: 10px 0;
+        }
+        
+        .author {
+            font-style: italic;
+            color: gray;
+        }
+        
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            /* Màu nền khi hover */
+            border-radius: 5px;
+            /* Bo tròn góc */
+        }
+        /* Hoặc hiệu ứng nổi bật cho đường link */
+        
+        .nav-link:hover {
+            color: rgb(219, 174, 51);
+            /* Đổi màu chữ khi hover */
+            font-weight: bold;
+            /* Chữ đậm khi hover */
+            text-shadow: 1px 1px 2px black;
+            /* Tạo hiệu ứng bóng chữ */
+        }
+        
+        .fixed-phone-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 50px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #3909e7;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            cursor: pointer;
+            animation: ripple 2s infinite ease-in-out;
+            /* Hiệu ứng gợn sóng */
+        }
+        /* Định nghĩa hiệu ứng gợn sóng */
+        
+        @keyframes ripple {
+            0% {
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7), 0 0 0 10px rgba(76, 175, 80, 0.1), 0 0 0 20px rgba(76, 175, 80, 0.05);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(76, 175, 80, 0), 0 0 0 20px rgba(76, 175, 80, 0.1), 0 0 0 30px rgba(76, 175, 80, 0.05);
+            }
+            100% {
+                box-shadow: 0 0 0 20px rgba(76, 175, 80, 0), 0 0 0 30px rgba(76, 175, 80, 0.05), 0 0 0 40px rgba(76, 175, 80, 0.01);
+            }
+        }
+        
+        .fixed-icon {
+            position: fixed;
+            bottom: 100px;
+            right: 50px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #2b09ec;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            cursor: pointer;
+            animation: ripple 2s infinite ease-in-out;
+            /* Hiệu ứng gợn sóng */
+        }
+        /* Định nghĩa hiệu ứng gợn sóng */
+        
+        @keyframes ripple {
+            0% {
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7), 0 0 0 10px rgba(76, 175, 80, 0.1), 0 0 0 20px rgba(76, 175, 80, 0.05);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(76, 175, 80, 0), 0 0 0 20px rgba(76, 175, 80, 0.1), 0 0 0 30px rgba(76, 175, 80, 0.05);
+            }
+            100% {
+                box-shadow: 0 0 0 20px rgba(76, 175, 80, 0), 0 0 0 30px rgba(76, 175, 80, 0.05), 0 0 0 40px rgba(76, 175, 80, 0.01);
+            }
+        }
+        
+        .d-flex {
+            transition: color 0.3s ease, filter 0.3s ease;
+        }
+        /* Hiệu ứng hover cho Giỏ Hàng */
+        
+        .cart h5 {
+            color: black;
+            /* Màu chữ sẽ chuyển sang đỏ */
+        }
+        
+        .cart:hover h5 {
+            color: rgb(255, 0, 0);
+            /* Màu chữ sẽ chuyển sang đỏ */
+        }
+        
+        .cart:hover img {
+            filter: brightness(0) saturate(100%) invert(45%) sepia(50%) saturate(1000%) hue-rotate(0deg) brightness(50%);
+            /* Màu icon sẽ chuyển sang đỏ */
+        }
+        /* Hiệu ứng hover cho Tài Khoản */
+        
+        .account h5 {
+            color: black;
+        }
+        
+        .account:hover h5 {
+            color: rgb(255, 0, 0);
+        }
+        
+        .account:hover img {
+            filter: brightness(0) saturate(100%) invert(45%) sepia(50%) saturate(1000%) hue-rotate(180deg) brightness(50%);
+            /* Màu icon sẽ chuyển sang một màu khác */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="background-image: url(/img/background3.jpg);">
+        <a href="hotro.html">
+            <div class="fixed-icon" onclick="window.location.href='cart.html'">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+        </a>
+        <a href="hotro.html">
+            <div class="fixed-phone-icon" onclick="window.location.href='tel:+84123456789'">
+                <i class="fas fa-phone"></i>
+            </div>
+        </a>
+        <div class="row" style="background-color:  rgb(52, 102, 209)">
+            <div class="col-3 mt-2">
+                <a href="home.html"> <img src="/img/logo.jpg" alt="" style="padding-left: 30px;padding-top: 5px;"></a>
+            </div>
+            <div class="col-5 mt-3">
+                <form class="d-flex" action="" style="margin-top: 20px;border-radius: 15px;">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <button class="btn btn-success" type="submit">Search</button>
+                </form>
+
+            </div>
+            <div class="col-4 mt-2">
+                <form action="" class="d-flex" style="margin-left: 20px;">
+                    <a href="thanhtoan.html" class="d-flex cart" style="text-decoration: none;">
+                        <img width="711" height="450" src="../img/giaohang.png" alt="" srcset="" style="width: 50px; height: 50px; margin-top: 20px; margin-left: 30px;">
+                        <h5 style=" margin-top: 30px;">Giỏ Hàng</h5>
+                    </a>
+                    <a href="login.html" class="d-flex account" style="text-decoration: none;">
+                        <img width="711" height="450" src="../img/account.png" alt="" srcset="" style="width: 50px; height: 50px; margin-top: 20px; margin-left: 30px;">
+                        <h5 style=" margin-top: 30px;">Tài Khoản</h5>
+                    </a>
+                </form>
+            </div>
+        </div>
+        <div class="row" style="background-color:  rgb(115, 155, 241);text-align: center;align-items: center;">
+            <div class="col-2"></div>
+            <div class="col-10">
+
+                <!-- Links -->
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gioithieu.html">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shopping.html">Sản Phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tintuc.html">Tin tức</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hotro.html">Hỗ trợ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sitemap.html">Site map</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="container content">
+            <h1>Đánh giá Polk Signa S4: Loa Soundbar trình diễn surround 3D ấn tượng</h1>
+            <p class="author">Ngày đăng: 22/10/2024 12:31 PM</p>
+
+            <div class="separator"></div>
+
+            <h2 class="section-title">Polk Signa S4 - Loa Soundbar trình diễn surround 3D ấn tượng</h2>
+            <p>Thiết kế tinh giản, gọn nhẹ tối ưu không gian set-up.</p>
+
+            <p>Loa Soundbar Polk Audio Signa S4 là lựa chọn tuyệt vời để thưởng thức những bộ phim bom tấn mới nhất hay đắm chìm trong âm nhạc bởi âm thanh 3D tuyệt vời. Đặc biệt với mức giá cực kì nhẹ nhàng, thực sự là một “món hời” đối với những ai đang
+                tìm kiếm một bộ soundbar Atmos cho không gian giải trí tại gia.</p>
+            <img src="/img/anhcontent1.png" alt="">
+            <h2 class="section-title">Thiết kế tinh giản, gọn nhẹ tối ưu không gian set-up</h2>
+            <p>Với thiết kế đã được tinh giản tối đa nhưng vẫn toát lên sự sang trọng và đầy tinh tế với những đường nét bo tròn mềm mại và thanh thoát. Độ hoàn thiện của sản phẩm có thể nhận xét rằng gần như không có điểm gì phải phàn nàn, chiều lòng cả
+                những khách hàng khó tính nhất.</p>
+            <p>Thiết kế kiểu dáng dài và mỏng với trọng lượng nhẹ nên rất dễ set-up, gia chủ có thể đặt loa nằm trên kệ dưới TV hoặc treo tường giúp tối ưu không gian lắp đặt. Trong đó, khả năng treo tường là một điều rất đáng để lưu tâm khi lựa chọn một
+                chiếc soundbar hiện nay.</p>
+            <img src="/img/anhcontent2.png" alt="">
+            <h2 class="section-title">Hệ thống 7 driver tái tạo hiệu ứng âm thanh chuẩn Dolby Atmos</h2>
+            <p>Tất cả sản phẩm của Polk Audio đều được sản xuất tại trung tâm phát triển và nghiên cứu âm nhạc của thương hiệu này tại Baltimore, Mỹ. Hãng đã tận dụng 50 năm kĩ thuật chế tạo loa hi-fi để mang đến trải nghiệm chuẩn cine dành cho chiếc Polk
+                Signa S4.
+            </p>
+            <img src="/img/anhcontent3.png" alt="">
+            <h2 class="section-title">Tính năng Voice Adjust cực hay</h2>
+            <p>Thường người dùng khi mua loa soundbar không chỉ để xem phim, nghe nhạc mà còn sử dụng với TV của mình để xem tin tức, podcast hoặc thậm chí là Youtube v.v...</p>
+            <p>Chính vì vậy với sự xuất hiện của công nghệ độc quyền VoiceAdjust giúp tăng cường và hỗ trợ giọng hội thoại của các nội dung trên được rõ nét và trong trẻo hơn đồng thời phần nhạc nền vẫn được giữ nguyên không hề bị gia giảm đi chất lượng.</p>
+
+            <h2 class="section-title">Âm thanh sống động và đầy chất điện ảnh</h2>
+            <p>Loa soundbar Polk Audio Signa S4 được thiết kế để có thể giả lập một không gian âm thanh vòm với độ chính xác cao không kém những bộ dàn âm thanh vòm hoàn chỉnh cho phòng giải trí tại gia.</p>
+
+            <h2 class="section-title">Thiết lập đơn giản trong vài giây</h2>
+
+            <p>Hoàn thiện Signa S4 là các cổng kết nối như HDMI eARC, kết nối không dây Bluetooth và các chế độ âm thanh để thay đổi dựa trên các nhu cầu sử dụng: nghe nhạc, xem phim lúc bình thường hoặc xem phim về đêm.</p>
+            <a href="#">
+                <p>Tham khảo thêm: Ultimate, 710, 320, 120, Clip 5, Acnos QUAD 64, Acnos CS3600, Acnos Hinet 3600, Acnos Flac 36, Acnos Hinet 450, Xtreme 4, Go 4, Goplay 3, Goplay Mini, Soundsticks 4, Onyx 7, Onyx 8, Aura 4, Beolit 20, Encore, Woburn 3,
+                    Stanmore 3, Acton 3, Kilburn 2, Authentics 200, Authentics 300, Authentics 500, The One Plus, The Three Plus, Pasion 2, Devialet Mania, Devialet Phantom I 108db, Devialet Phantom I 103db, Bose Revolve Plus 2, Bose Revolve 2, Bose S1
+                    Pro+, Bose Max, EV 30M, Boombox 3, Boombox 3 Wi-Fi, Bose Flex II, Onyx 9, Emberton III, Willen II</p>
+            </a>
+        </div>
+
+
+        <div class="row" style="background-color:  rgb(101, 86, 240);color: rgb(229, 247, 247);padding-left: 50px;padding-top:10px ;">
+            <div class="col-4">
+                <h3>Thông tin liên hệ</h3>
+                <p>40/39 Lê Thị Hồng p17 Gò Vấp</p>
+                <p>Sđt:012345678</p>
+                <p>Email:Vua2hand@gmail.com</p>
+                <img src="/img/face.svg" alt="" style="width: 10%;">
+                <img src="/img/zalo.webp" alt="" style="width: 10%;padding-left: 5px;padding-top: 5px;">
+                <img src="/img/phone.png" alt="" style="width: 10%; padding-left: 5px;padding-top: 5px;">
+            </div>
+            <div class="col-4">
+                <H3>Hỗ trợ khách hàng</H3>
+                <p>Giới thiệu</p>
+                <p>Giỏ hàng</p>
+                <p>Hướng dẫn mua hàng</p>
+                <p>Hướng dẫn thanh toán</p>
+            </div>
+            <div class="col-4">
+                <h3>Chính sách</h3>
+                <p>Chính sách bảo hành</p>
+                <p>Chính sách đổi trả, hoàn tiền</p>
+                <p>Quy chế hoạt động</p>
+                <p>Chính sách bảo mật</p>
+            </div>
+        </div>
+        <div class="row" style="background-color: rgb(2, 22, 41);color: coral;">
+            <p style="text-align: center;padding-top: 10px;">Địa chỉ:40/39 Lê Thị Hồng p17 Gò Vấp </p>
+            <p style="text-align: center;">Đường dây nóng liên hệ:19001911 </p>
+        </div>
+    </div>
+</body>
+
+</html>

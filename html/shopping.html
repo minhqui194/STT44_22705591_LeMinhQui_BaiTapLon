@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vua2hand.com</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.7.1.min.js">
+    </script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        .d-flex {
+            transition: color 0.3s ease, filter 0.3s ease;
+        }
+        /* Hiệu ứng hover cho Giỏ Hàng */
+        
+        .cart h5 {
+            color: black;
+            /* Màu chữ sẽ chuyển sang đỏ */
+        }
+        
+        .cart:hover h5 {
+            color: rgb(255, 0, 0);
+            /* Màu chữ sẽ chuyển sang đỏ */
+        }
+        
+        .cart:hover img {
+            filter: brightness(0) saturate(100%) invert(45%) sepia(50%) saturate(1000%) hue-rotate(0deg) brightness(50%);
+            /* Màu icon sẽ chuyển sang đỏ */
+        }
+        /* Hiệu ứng hover cho Tài Khoản */
+        
+        .account h5 {
+            color: black;
+        }
+        
+        .account:hover h5 {
+            color: rgb(255, 0, 0);
+        }
+        
+        .account:hover img {
+            filter: brightness(0) saturate(100%) invert(45%) sepia(50%) saturate(1000%) hue-rotate(180deg) brightness(50%);
+            /* Màu icon sẽ chuyển sang một màu khác */
+        }
+        
+        .product-card {
+            position: relative;
+            overflow: hidden;
+            margin: 15px 0;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .product-image {
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            background-color: rgba(189, 130, 223, 0.9);
+            padding: 20px;
+            position: relative;
+        }
+        
+        .btn-add-to-cart {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+            /* Khoảng cách giữa 2 nút */
+        }
+        
+        .btn-add-to-cart:hover {
+            background-color: #0056b3;
+        }
+        
+        .btn-details {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-details:hover {
+            background-color: #218838;
+        }
+        
+        .nav-link {
+            color: aliceblue;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: yellow;
+        }
+        
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            /* Màu nền khi hover */
+            border-radius: 5px;
+            /* Bo tròn góc */
+        }
+        /* Hoặc hiệu ứng nổi bật cho đường link */
+        
+        .nav-link:hover {
+            color: rgb(219, 174, 51);
+            /* Đổi màu chữ khi hover */
+            font-weight: bold;
+            /* Chữ đậm khi hover */
+            text-shadow: 1px 1px 2px black;
+            /* Tạo hiệu ứng bóng chữ */
+        }
+        
+        .fixed-phone-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 50px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #3909e7;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            cursor: pointer;
+            animation: ripple 2s infinite ease-in-out;
+            /* Hiệu ứng gợn sóng */
+        }
+        /* Định nghĩa hiệu ứng gợn sóng */
+        
+        @keyframes ripple {
+            0% {
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7), 0 0 0 10px rgba(76, 175, 80, 0.1), 0 0 0 20px rgba(76, 175, 80, 0.05);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(76, 175, 80, 0), 0 0 0 20px rgba(76, 175, 80, 0.1), 0 0 0 30px rgba(76, 175, 80, 0.05);
+            }
+            100% {
+                box-shadow: 0 0 0 20px rgba(76, 175, 80, 0), 0 0 0 30px rgba(76, 175, 80, 0.05), 0 0 0 40px rgba(76, 175, 80, 0.01);
+            }
+        }
+        
+        .fixed-icon {
+            position: fixed;
+            bottom: 100px;
+            right: 50px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #2b09ec;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            cursor: pointer;
+            animation: ripple 2s infinite ease-in-out;
+            /* Hiệu ứng gợn sóng */
+        }
+        /* Định nghĩa hiệu ứng gợn sóng */
+        
+        @keyframes ripple {
+            0% {
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7), 0 0 0 10px rgba(76, 175, 80, 0.1), 0 0 0 20px rgba(76, 175, 80, 0.05);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(76, 175, 80, 0), 0 0 0 20px rgba(76, 175, 80, 0.1), 0 0 0 30px rgba(76, 175, 80, 0.05);
+            }
+            100% {
+                box-shadow: 0 0 0 20px rgba(76, 175, 80, 0), 0 0 0 30px rgba(76, 175, 80, 0.05), 0 0 0 40px rgba(76, 175, 80, 0.01);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="background-image: url(/img/background3.jpg);">
+        <a href="hotro.html">
+            <div class="fixed-icon" onclick="window.location.href='cart.html'">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+        </a>
+        <a href="hotro.html">
+            <div class="fixed-phone-icon" onclick="window.location.href='tel:+84123456789'">
+                <i class="fas fa-phone"></i>
+            </div>
+        </a>
+        <div class="row" style="background-color: rgb(52, 102, 209)">
+            <div class="col-3 mt-2">
+                <a href="home.html"> <img src="/img/logo.jpg" alt="" style="padding-left: 30px;padding-top: 5px;"></a>
+            </div>
+            <div class="col-5 mt-3">
+                <form class="d-flex" action="" style="margin-top: 20px;border-radius: 15px;">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <button class="btn btn-success" type="submit">Search</button>
+                </form>
+
+            </div>
+            <div class="col-4 mt-2">
+                <form action="" class="d-flex" style="margin-left: 20px;">
+                    <a href="thanhtoan.html" class="d-flex cart" style="text-decoration: none;">
+                        <img width="711" height="450" src="../img/giaohang.png" alt="" srcset="" style="width: 50px; height: 50px; margin-top: 20px; margin-left: 30px;">
+                        <h5 style=" margin-top: 30px;">Giỏ Hàng</h5>
+                    </a>
+                    <a href="login.html" class="d-flex account" style="text-decoration: none;">
+                        <img width="711" height="450" src="../img/account.png" alt="" srcset="" style="width: 50px; height: 50px; margin-top: 20px; margin-left: 30px;">
+                        <h5 style=" margin-top: 30px;">Tài Khoản</h5>
+                    </a>
+                </form>
+            </div>
+        </div>
+        <div class="row" style="background-color:rgb(115, 155, 241);text-align: center;align-items: center;">
+            <div class="col-2"></div>
+            <div class="col-10">
+
+                <!-- Links -->
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gioithieu.html">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shopping.html">Sản Phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tintuc.html">Tin tức</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hotro.html">Hỗ trợ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sitemap.html">Site map</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="container mt-5">
+            <h1 class="text-center mb-4" style="color: blue;">Sản Phẩm</h1>
+            <div class="row">
+                <!-- Sản phẩm 1 -->
+                <div class="col-md-3">
+                    <div class="card product-card">
+                        <img src="/img/sp1.png" class="card-img-top product-image" alt="Sản phẩm 1">
+                        <div class="product-info">
+                            <h5 class="card-title">Loa DEVIALETMANILA</h5>
+                            <p class="card-text" style="color: red;">Giá: 1.095.000đ</p>
+                            <button class="btn btn-details" data-toggle="modal" data-target="#productModal" data-description='
+    <h6>Thông số kỹ thuật</h6>
+    <p><strong>Loại:</strong> loa bluetooth có pin</p>
+    <p><strong>Âm thanh:</strong> 4 củ loa toàn dải bằng nhôm, 2 woofer</p>
+    <p><strong>Bộ xử lý:</strong> 4 x ARM Corter - A53, 1.4 GHz Processor</p>
+    <p><strong>Độ nhạy:</strong> 95 dB</p>
+    <p><strong>Mạch công suất:</strong> 2 x 38W Class D cho woofer, 4 x 25W Class-D cho loa toàn dải</p>
+    <p><strong>Tần số:</strong> 30Hz - 20kHz</p>
+    <p><strong>Kết nối:</strong> Bluetooth 5.0; A2DP và AVRCP Profiles, AAC, SBC audio, codecs, Spotify, AirPlay 2, Wifi</p>
+    <p><strong>Pin:</strong> 10h</p>
+    <p><strong>Chống nước:</strong> IPX4</p>
+    <p><strong>Kích thước:</strong> 176 x 193 x 139 mm</p>
+'>Xem chi tiết</button>
+
+                            <button class="btn btn-add-to-cart" data-name="Loa DEVIALETMANILA" data-price="1095000">Thêm vào giỏ hàng</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sản phẩm 2 -->
+                <div class="col-md-3">
+                    <div class="card product-card">
+                        <img src="/img/sp2.jpg" class="card-img-top product-image" alt="Sản phẩm 2">
+                        <div class="product-info">
+                            <h5 class="card-title">Loa BOSE SOUNDLINK</h5>
+                            <p class="card-text" style="color: red;">Giá: 3.990.000đ</p>
+                            <button class="btn btn-details" data-toggle="modal" data-target="#productModal" data-description='
+                            <h6>Thông số kỹ thuật</h6>
+                            <p><strong>Kích thước & Cấu tạo:</strong> Loa Bose SoundLink Flex 2 (CxRxS): 9,04 x 20,14 x 5,23 cm (0,59 kg)</p>
+                            <p><strong>Vật liệu:</strong> Nhôm, Vải, Nylon, Nhựa, Silicone, Thép</p>
+                            <p><strong>Kháng nước, kháng bụi:</strong> IP67</p>
+                            <p><strong>Pin:</strong> Pin sạc Lithium-ion, thời lượng tới 12 giờ, thời gian sạc 4 giờ</p>
+                            <p><strong>Cổng sạc:</strong> USB-C</p>
+                            <p><strong>Bluetooth:</strong> phiên bản 5.3, phạm vi tới 9m</p>
+                            <p><strong>Mic đàm thoại:</strong> Có</p>
+                            <p><strong>Công nghệ âm thanh:</strong> loa toàn dải, SimpleSync, Stereo/Party Mode, Snapdragon Sound</p>
+                        '>Xem chi tiết</button>
+
+                            <button class="btn btn-add-to-cart" data-name="Loa BOSE SOUNDLINK" data-price="3990000">Thêm vào giỏ hàng</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sản phẩm 3 -->
+                <div class="col-md-3">
+                    <div class="card product-card">
+                        <img src="/img/sp3.png" class="card-img-top product-image" alt="Sản phẩm 3">
+                        <div class="product-info">
+                            <h5 class="card-title">Loa JBL PARTYBOX 710</h5>
+                            <p class="card-text" style="color: red;">Giá: 23.000.000đ</p>
+                            <button class="btn btn-details" data-toggle="modal" data-target="#productModal" data-description='
+                            <h6>Thông số kỹ thuật</h6>
+                            <p><strong>Model:</strong> PartyBox 710</p>
+                            <p><strong>Hệ thống âm thanh:</strong> Loa trầm 2 x 216mm (8"), Loa tweeter 2 x 70mm (2,75") và 1 cổng phản xạ âm dạng đường đua hướng sau</p>
+                            <p><strong>Công suất đầu ra:</strong> 800W RMS (IEC60268)</p>
+                            <p><strong>Nguồn vào:</strong> 100 – 240 VAC ~50/60Hz</p>
+                            <p><strong>Đáp ứng tần số:</strong> 35Hz – 20kHz (-6dB)</p>
+                            <p><strong>Tỷ lệ tín hiệu trên tạp âm:</strong> >80dB</p>
+                        '>Xem chi tiết</button>
+
+                            <button class="btn btn-add-to-cart" data-name="Loa JBL PARTYBOX 710" data-price="23000000">Thêm vào giỏ hàng</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sản phẩm 4 -->
+                <div class="col-md-3">
+                    <div class="card product-card">
+                        <img src="/img/SP4.png" class="card-img-top product-image" alt="Sản phẩm 4">
+                        <div class="product-info">
+                            <h5 class="card-title">Loa JBL CONTROL 23-1</h5>
+                            <p class="card-text" style="color: red;">Giá: 14.000.000đ</p>
+                            <button class="btn btn-details" data-toggle="modal" data-target="#productModal" data-description='
+                            <h6>Thông số kỹ thuật</h6>
+                            <p><strong>Dải tần (-10 dB):</strong> 70 Hz – 20 kHz</p>
+                            <p><strong>Tần số đáp ứng (+-3dB):</strong> 95 Hz – 19 kHz</p>
+                            <p><strong>Độ nhạy:</strong> 86 dB, 1W/1m (ave, 100Hz-10kHz)</p>
+                            <p><strong>Trở kháng:</strong> 8 Ohms</p>
+                            <p><strong>Loa trầm:</strong> 3” với hình nón sợi thuỷ tinh dệt</p>
+                            <p><strong>Loa tweeter:</strong> màng ngang PEI ½” chất lỏng làm mát</p>
+                            <p><strong>Phần cứng:</strong> gắn InvisiBall® tích hợp, cộng với khung U có sẵn</p>
+                            <p><strong>Vỏ bọc và đầu dò:</strong> kháng thời tiết</p>
+                            <p><strong>Vùng phủ rộng:</strong> 100° x 100°</p>
+                        '>Xem chi tiết</button>
+
+                            <button class="btn btn-add-to-cart" data-name="Loa JBL CONTROL 23-1" data-price="14000000">Thêm vào giỏ hàng</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sản phẩm 5 -->
+                <div class="col-md-3">
+                    <div class="card product-card">
+                        <img src="/img/sp5.png" class="card-img-top product-image" alt="Sản phẩm 5">
+                        <div class="product-info">
+                            <h5 class="card-title">Loa BOSESOUNDLINK 1</h5>
+                            <p class="card-text" style="color: red;">Giá: 11.000.000đ</p>
+                            <button class="btn btn-details" data-toggle="modal" data-target="#productModal" data-description='
+    <h6>Thông số kỹ thuật</h6>
+    <p><strong>Model:</strong> Bose SoundLink Max</p>
+    <p><strong>Kích thước:</strong> 10.01 x 24.87 x 10.16 cm</p>
+    <p><strong>Trọng lượng:</strong> 1.1 kg</p>
+    <p><strong>Thời gian sử dụng:</strong> Lên đến 15 giờ</p>
+    <p><strong>Kháng nước:</strong> IP55</p>
+    <p><strong>Công nghệ kết nối:</strong> Bluetooth 5.0, NFC</p>
+    <p><strong>Cổng sạc:</strong> USB-C</p>
+    <p><strong>Loa:</strong> 2 loa toàn dải, 1 loa trầm</p>
+    <p><strong>Âm thanh:</strong> Công nghệ SoundLink cho âm thanh rõ nét và mạnh mẽ</p>
+'>Xem chi tiết</button>
+
+                            <button class="btn btn-add-to-cart" data-name="Loa BOSE SOUNDLINK MAX" data-price="11000000">Thêm vào giỏ hàng</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sản phẩm 6 -->
+                <div class="col-md-3">
+                    <div class="card product-card">
+                        <img src="/img/sp6.png" class="card-img-top product-image" alt="Sản phẩm 6">
+                        <div class="product-info">
+                            <h5 class="card-title">AMPLY JBL VMA 2021</h5>
+                            <p class="card-text" style="color: red;">Giá: 21.800.000đ</p>
+                            <button class="btn btn-details" data-toggle="modal" data-target="#productModal" data-description='
+                            <h6>Thông số kỹ thuật</h6>
+                            <p><strong>Model:</strong> JBL VMA 2021</p>
+                            <p><strong>Công suất đầu ra:</strong> 20W x 2 (8Ω) / 30W x 2 (4Ω)</p>
+                            <p><strong>Tần số đáp ứng:</strong> 20 Hz - 20 kHz</p>
+                            <p><strong>Độ nhạy:</strong> 100 mV để đạt công suất tối đa</p>
+                            <p><strong>Trở kháng đầu vào:</strong> 10 kΩ</p>
+                            <p><strong>Ngõ vào:</strong> 2 ngõ vào mic, 2 ngõ vào đường line</p>
+                            <p><strong>Công suất tiêu thụ:</strong> 50W</p>
+                            <p><strong>Kích thước:</strong> 1U (1.75 inch)</p>
+                            <p><strong>Trọng lượng:</strong> 1.8 kg</p>
+                            <p><strong>Chế độ hoạt động:</strong> Chế độ khẩn cấp và chế độ bình thường</p>
+                        '>Xem chi tiết</button>
+
+                            <button class="btn btn-add-to-cart" data-name="AMPLY JBL VMA 2021" data-price="21800000">Thêm vào giỏ hàng</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sản phẩm 7 -->
+                <div class="col-md-3">
+                    <div class="card product-card">
+                        <img src="/img/sp7.png" class="card-img-top product-image" alt="Sản phẩm 7">
+                        <div class="product-info">
+                            <h5 class="card-title">AMPLY JBL VMA 260</h5>
+                            <p class="card-text" style="color: red;">Giá: 17.600.000đ</p>
+                            <button class="btn btn-details" data-toggle="modal" data-target="#productModal" data-description='
+    <h6>Thông số kỹ thuật</h6>
+    <p><strong>Model:</strong> JBL VMA 260</p>
+    <p><strong>Công suất đầu ra:</strong> 20W x 2 (8Ω) / 30W x 2 (4Ω)</p>
+    <p><strong>Tần số đáp ứng:</strong> 20 Hz - 20 kHz</p>
+    <p><strong>Độ nhạy:</strong> 100 mV để đạt công suất tối đa</p>
+    <p><strong>Trở kháng đầu vào:</strong> 10 kΩ</p>
+    <p><strong>Ngõ vào:</strong> 2 ngõ vào mic, 2 ngõ vào đường line</p>
+    <p><strong>Công suất tiêu thụ:</strong> 50W</p>
+    <p><strong>Kích thước:</strong> 1U (1.75 inch)</p>
+    <p><strong>Trọng lượng:</strong> 2.0 kg</p>
+    <p><strong>Chế độ hoạt động:</strong> Chế độ khẩn cấp và chế độ bình thường</p>
+'>Xem chi tiết</button>
+
+                            <button class="btn btn-add-to-cart" data-name="AMPLY JBL VMA 260" data-price="17600000">Thêm vào giỏ hàng</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sản phẩm 8 -->
+                <div class="col-md-3">
+                    <div class="card product-card">
+                        <img src="/img/sp8.png" class="card-img-top product-image" alt="Sản phẩm 8">
+                        <div class="product-info">
+                            <h5 class="card-title">Tai nghe CARDO PRO</h5>
+                            <p class="card-text" style="color: red;">Giá: 2.000.000đ</p>
+                            <button class="btn btn-details" data-toggle="modal" data-target="#productModal" data-description='
+    <h6>Thông số kỹ thuật</h6>
+    <p><strong>Model:</strong> Cardo Pro</p>
+    <p><strong>Loại tai nghe:</strong> Tai nghe không dây, công nghệ Bluetooth</p>
+    <p><strong>Thời gian sử dụng:</strong> Lên đến 13 giờ</p>
+    <p><strong>Thời gian chờ:</strong> 1 tháng</p>
+    <p><strong>Khoảng cách kết nối:</strong> Lên đến 1.6 km</p>
+    <p><strong>Công nghệ âm thanh:</strong> Âm thanh stereo, giảm tiếng ồn</p>
+    <p><strong>Chống nước:</strong> IP67</p>
+    <p><strong>Trọng lượng:</strong> 70 gram</p>
+    <p><strong>Điều khiển:</strong> Các nút điều khiển trên tai nghe và điều khiển giọng nói</p>
+    <p><strong>Khả năng tương thích:</strong> Tương thích với hầu hết các thiết bị Bluetooth</p>
+'>Xem chi tiết</button>
+
+                            <button class="btn btn-add-to-cart" data-name="Tai nghe CARDO PRO" data-price="2000000">Thêm vào giỏ hàng</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sản phẩm 9 -->
+                <div class="col-md-3">
+                    <div class="card product-card">
+                        <img src="/img/sp9.png" class="card-img-top product-image" alt="Sản phẩm 9">
+                        <div class="product-info">
+                            <h5 class="card-title">MÂM THAN AUDIO TECHNICA AT LP60XYSB</h5>
+                            <p class="card-text" style="color: red;">Giá: 5.400.000đ</p>
+                            <button class="btn btn-details" data-toggle="modal" data-target="#productModal" data-description='
+                            <h6>Thông số kỹ thuật</h6>
+                            <p><strong>Model:</strong> Audio Technica AT-LP60XYSB</p>
+                            <p><strong>Loại mâm than:</strong> Mâm than tự động, truyền động bằng băng đai</p>
+                            <p><strong>Đường kính đĩa:</strong> 33 1/3 và 45 RPM</p>
+                            <p><strong>Loại kim:</strong> Kim chữ V, có thể thay thế</p>
+                            <p><strong>Độ nhạy:</strong> 2.5 mV</p>
+                            <p><strong>Đáp ứng tần số:</strong> 20 Hz - 20 kHz</p>
+                            <p><strong>Chống rung:</strong> Có</p>
+                            <p><strong>Kích thước:</strong> 14.17 x 16.54 x 3.74 inch</p>
+                            <p><strong>Trọng lượng:</strong> 4.4 kg</p>
+                            <p><strong>Cổng kết nối:</strong> RCA, USB</p>
+                            <p><strong>Điện áp hoạt động:</strong> 100 - 240V, 50/60Hz</p>
+                        '>Xem chi tiết</button>
+
+                            <button class="btn btn-add-to-cart" data-name="MÂM THAN AUDIO TECHNICA AT LP60XYSB" data-price="5400000">Thêm vào giỏ hàng</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sản phẩm 10 -->
+                <div class="col-md-3">
+                    <div class="card product-card">
+                        <img src="/img/SP10.jpg" class="card-img-top product-image" alt="Sản phẩm 10">
+                        <div class="product-info">
+                            <h5 class="card-title">LOA HARMAN KARDON CITATION SUBWOOFER</h5>
+                            <p class="card-text" style="color: red;">Giá: 20.700.000đ</p>
+                            <button class="btn btn-details" data-toggle="modal" data-target="#productModal" data-description='
+                            <h6>Thông số kỹ thuật</h6>
+                            <p><strong>Model:</strong> Harman Kardon Citation Subwoofer</p>
+                            <p><strong>Loại loa:</strong> Subwoofer không dây</p>
+                            <p><strong>Công suất:</strong> 200W RMS</p>
+                            <p><strong>Đáp ứng tần số:</strong> 30 Hz - 20 kHz</p>
+                            <p><strong>Chất liệu vỏ:</strong> Gỗ MDF và vải bọc cao cấp</p>
+                            <p><strong>Bluetooth:</strong> Có, với kết nối không dây</p>
+                            <p><strong>Kích thước:</strong> 15.35 x 15.35 x 15.75 inch (390 x 390 x 400 mm)</p>
+                            <p><strong>Trọng lượng:</strong> 11.8 kg</p>
+                            <p><strong>Điện áp hoạt động:</strong> 100-240V, 50/60Hz</p>
+                            <p><strong>Tính năng bổ sung:</strong> Tương thích với hệ sinh thái Citation, điều khiển qua ứng dụng.</p>
+                        '>Xem chi tiết</button>
+
+                            <button class="btn btn-add-to-cart" data-name="LOA HARMAN KARDON CITATION SUBWOOFER" data-price="20700000">Thêm vào giỏ hàng</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sản phẩm 11 -->
+                <div class="col-md-3">
+                    <div class="card product-card">
+                        <img src="/img/sp11.png" class="card-img-top product-image" alt="Sản phẩm 11">
+                        <div class="product-info">
+                            <h5 class="card-title">LOA SIÊU TRẦM KLIPSCH R-100SW GỖ MDF</h5>
+                            <p class="card-text" style="color: red;">Giá: 7.600.000đ</p>
+                            <button class="btn btn-details" data-toggle="modal" data-target="#productModal" data-description='
+                            <h6>Thông số kỹ thuật</h6>
+                            <p><strong>Model:</strong> Klipsch R-100SW</p>
+                            <p><strong>Loại loa:</strong> Loa siêu trầm</p>
+                            <p><strong>Chất liệu vỏ:</strong> Gỗ MDF</p>
+                            <p><strong>Công suất:</strong> 150W RMS (400W Peak)</p>
+                            <p><strong>Đáp ứng tần số:</strong> 32 Hz - 120 kHz</p>
+                            <p><strong>Loa trầm:</strong> 10 inch (254 mm) với hình nón sợi tổng hợp</p>
+                            <p><strong>Kích thước:</strong> 15.7 x 12.5 x 14.5 inch (398 x 318 x 368 mm)</p>
+                            <p><strong>Trọng lượng:</strong> 11.3 kg</p>
+                            <p><strong>Kết nối:</strong> RCA Line Level và LFE</p>
+                            <p><strong>Tính năng bổ sung:</strong> Điều chỉnh pha và điều chỉnh âm lượng.</p>
+                        '>Xem chi tiết</button>
+
+                            <button class="btn btn-add-to-cart" data-name="LOA SIÊU TRẦM KLIPSCH R-100SW" data-price="7600000">Thêm vào giỏ hàng</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sản phẩm 12 -->
+                <div class="col-md-3">
+                    <div class="card product-card">
+                        <img src="/img/sp12.png" class="card-img-top product-image" alt="Sản phẩm 12">
+                        <div class="product-info">
+                            <h5 class="card-title">Loa ALPHA WORKS AW 52 HÀNG HOA KÌ SIÊU MƯỢT</h5>
+                            <p class="card-text" style="color: red;">Giá: 2.000.000đ</p>
+                            <button class="btn btn-details" data-toggle="modal" data-target="#productModal" data-description='
+                            <h6>Thông số kỹ thuật</h6>
+                            <p><strong>Model:</strong> AW52</p>
+                            <p><strong>Thương hiệu:</strong> Alpha Works</p>
+                            <p><strong>Cấu hình:</strong> 2 đường tiếng</p>
+                            <p><strong>Trở kháng:</strong> 8Ω</p>
+                            <p><strong>Độ nhạy (2.83 V / 1 M):</strong> 89dB</p>
+                            <p><strong>Tần số đáp ứng (-3 dB):</strong> 70Hz-20kHz</p>
+                            <p><strong>Công suất (RMS):</strong> 50W</p>
+                            <p><strong>Peak Music:</strong> 150W</p>
+                            <p><strong>Ampli khuyến nghị:</strong> 25-150W</p>
+                            <p><strong>Kích thước:</strong> 303 x 182.43 x 178.54mm</p>
+                        '>Xem chi tiết</button>
+                            <button class="btn btn-add-to-cart" data-name="Loa ALPHA WORKS AW 52" data-price="2000000">Thêm vào giỏ hàng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="productModalLabel">Chi tiết sản phẩm</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span>&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="productDescription"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                // Khi nút "Xem chi tiết" được nhấn
+                $('.btn-details').on('click', function() {
+                    // Lấy mô tả sản phẩm từ thuộc tính data-description
+                    var description = $(this).data('description');
+                    // Đặt mô tả vào modal (sử dụng .html() thay vì .text())
+                    $('#productDescription').html(description);
+                });
+            });
+        </script>
+
+
+
+
+        <div id="cart-notification" class="alert alert-success position-fixed top-0 end-0 m-3" style="display: none; z-index: 1050;">
+            Sản phẩm đã được thêm vào giỏ hàng!
+        </div>
+        <script>
+            // Lấy tất cả các nút "Thêm vào giỏ hàng"
+            const addToCartButtons = document.querySelectorAll('.btn-add-to-cart');
+
+            // Xử lý sự kiện khi nhấn vào "Thêm vào giỏ hàng"
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const name = this.getAttribute('data-name');
+                    const price = parseFloat(this.getAttribute('data-price'));
+
+                    // Lấy dữ liệu giỏ hàng từ localStorage
+                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                    // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
+                    const existingProductIndex = cart.findIndex(item => item.name === name);
+
+                    if (existingProductIndex !== -1) {
+                        // Nếu sản phẩm đã tồn tại, tăng số lượng
+                        cart[existingProductIndex].quantity += 1;
+                    } else {
+                        // Nếu sản phẩm chưa tồn tại, thêm sản phẩm mới với số lượng ban đầu là 1
+                        cart.push({
+                            name,
+                            price,
+                            quantity: 1
+                        });
+                    }
+
+                    // Lưu giỏ hàng vào localStorage
+                    localStorage.setItem('cart', JSON.stringify(cart));
+
+                    // Hiển thị thông báo thêm thành công
+                    showNotification();
+                });
+            });
+
+
+            // Hàm hiển thị thông báo
+            function showNotification() {
+                const notification = document.getElementById('cart-notification');
+                notification.style.display = 'block';
+
+                // Ẩn thông báo sau 2 giây
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 2000);
+            }
+        </script>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+        <div class="row" style="background-color:  rgb(101, 86, 240);color: rgb(229, 247, 247);padding-left: 50px;padding-top:10px ;">
+            <div class="col-4">
+                <h3>Thông tin liên hệ</h3>
+                <p>40/39 Lê Thị Hồng p17 Gò Vấp</p>
+                <p>Sđt:012345678</p>
+                <p>Email:Vua2hand@gmail.com</p>
+                <img src="/img/face.svg" alt="" style="width: 10%;">
+                <img src="/img/zalo.webp" alt="" style="width: 10%;padding-left: 5px;padding-top: 5px;">
+                <img src="/img/phone.png" alt="" style="width: 10%; padding-left: 5px;padding-top: 5px;">
+            </div>
+            <div class="col-4">
+                <H3>Hỗ trợ khách hàng</H3>
+                <p>Giới thiệu</p>
+                <p>Giỏ hàng</p>
+                <p>Hướng dẫn mua hàng</p>
+                <p>Hướng dẫn thanh toán</p>
+            </div>
+            <div class="col-4">
+                <h3>Chính sách</h3>
+                <p>Chính sách bảo hành</p>
+                <p>Chính sách đổi trả, hoàn tiền</p>
+                <p>Quy chế hoạt động</p>
+                <p>Chính sách bảo mật</p>
+            </div>
+        </div>
+        <div class="row" style="background-color: rgb(2, 22, 41);color: coral;">
+            <p style="text-align: center;padding-top: 10px;">Địa chỉ:40/39 Lê Thị Hồng p17 Gò Vấp </p>
+        </div>
+    </div>
+</body>
+
+</html>

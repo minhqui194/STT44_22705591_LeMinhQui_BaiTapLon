@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.7.1.min.js">
+    </script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        .d-flex {
+            transition: color 0.3s ease, filter 0.3s ease;
+        }
+        /* Hiệu ứng hover cho Giỏ Hàng */
+        
+        .cart h5 {
+            color: black;
+            /* Màu chữ sẽ chuyển sang đỏ */
+        }
+        
+        .cart:hover h5 {
+            color: rgb(255, 0, 0);
+            /* Màu chữ sẽ chuyển sang đỏ */
+        }
+        
+        .cart:hover img {
+            filter: brightness(0) saturate(100%) invert(45%) sepia(50%) saturate(1000%) hue-rotate(0deg) brightness(50%);
+            /* Màu icon sẽ chuyển sang đỏ */
+        }
+        /* Hiệu ứng hover cho Tài Khoản */
+        
+        .account h5 {
+            color: black;
+        }
+        
+        .account:hover h5 {
+            color: rgb(255, 0, 0);
+        }
+        
+        .account:hover img {
+            filter: brightness(0) saturate(100%) invert(45%) sepia(50%) saturate(1000%) hue-rotate(180deg) brightness(50%);
+            /* Màu icon sẽ chuyển sang một màu khác */
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            margin-top: 50px;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background-color: white;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cart-item h5 {
+            margin: 0;
+        }
+        
+        .total {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .btn-back,
+        .btn-pay {
+            margin-top: 20px;
+        }
+        
+        .quantity-input {
+            width: 60px;
+        }
+        
+        .nav-link {
+            color: aliceblue;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: yellow;
+        }
+        
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            /* Màu nền khi hover */
+            border-radius: 5px;
+            /* Bo tròn góc */
+        }
+        /* Hoặc hiệu ứng nổi bật cho đường link */
+        
+        .nav-link:hover {
+            color: rgb(219, 174, 51);
+            /* Đổi màu chữ khi hover */
+            font-weight: bold;
+            /* Chữ đậm khi hover */
+            text-shadow: 1px 1px 2px black;
+            /* Tạo hiệu ứng bóng chữ */
+        }
+        
+        .fixed-phone-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 50px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #3909e7;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            cursor: pointer;
+            animation: ripple 2s infinite ease-in-out;
+            /* Hiệu ứng gợn sóng */
+        }
+        /* Định nghĩa hiệu ứng gợn sóng */
+        
+        @keyframes ripple {
+            0% {
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7), 0 0 0 10px rgba(76, 175, 80, 0.1), 0 0 0 20px rgba(76, 175, 80, 0.05);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(76, 175, 80, 0), 0 0 0 20px rgba(76, 175, 80, 0.1), 0 0 0 30px rgba(76, 175, 80, 0.05);
+            }
+            100% {
+                box-shadow: 0 0 0 20px rgba(76, 175, 80, 0), 0 0 0 30px rgba(76, 175, 80, 0.05), 0 0 0 40px rgba(76, 175, 80, 0.01);
+            }
+        }
+        
+        .fixed-icon {
+            position: fixed;
+            bottom: 100px;
+            right: 50px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #2b09ec;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            cursor: pointer;
+            animation: ripple 2s infinite ease-in-out;
+            /* Hiệu ứng gợn sóng */
+        }
+        /* Định nghĩa hiệu ứng gợn sóng */
+        
+        @keyframes ripple {
+            0% {
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7), 0 0 0 10px rgba(76, 175, 80, 0.1), 0 0 0 20px rgba(76, 175, 80, 0.05);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(76, 175, 80, 0), 0 0 0 20px rgba(76, 175, 80, 0.1), 0 0 0 30px rgba(76, 175, 80, 0.05);
+            }
+            100% {
+                box-shadow: 0 0 0 20px rgba(76, 175, 80, 0), 0 0 0 30px rgba(76, 175, 80, 0.05), 0 0 0 40px rgba(76, 175, 80, 0.01);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="background-image: url(/img/background3.jpg);">
+        <a href="hotro.html">
+            <div class="fixed-icon" onclick="window.location.href='cart.html'">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+        </a>
+        <a href="hotro.html">
+            <div class="fixed-phone-icon" onclick="window.location.href='tel:+84123456789'">
+                <i class="fas fa-phone"></i>
+            </div>
+        </a>
+        <div class="row" style="background-color: rgb(52, 102, 209)">
+            <div class="col-3 mt-2">
+                <a href="home.html"> <img src="/img/logo.jpg" alt="" style="padding-left: 30px;padding-top: 5px;"></a>
+            </div>
+            <div class="col-5 mt-3">
+                <form class="d-flex" action="" style="margin-top: 20px;border-radius: 15px;">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <button class="btn btn-success" type="submit">Search</button>
+                </form>
+
+            </div>
+            <div class="col-4 mt-2">
+                <form action="" class="d-flex" style="margin-left: 20px;">
+                    <a href="thanhtoan.html" class="d-flex cart" style="text-decoration: none;">
+                        <img width="711" height="450" src="../img/giaohang.png" alt="" srcset="" style="width: 50px; height: 50px; margin-top: 20px; margin-left: 30px;">
+                        <h5 style=" margin-top: 30px;">Giỏ Hàng</h5>
+                    </a>
+                    <a href="login.html" class="d-flex account" style="text-decoration: none;">
+                        <img width="711" height="450" src="../img/account.png" alt="" srcset="" style="width: 50px; height: 50px; margin-top: 20px; margin-left: 30px;">
+                        <h5 style=" margin-top: 30px;">Tài Khoản</h5>
+                    </a>
+                </form>
+            </div>
+        </div>
+        <div class="row" style="background-color:rgb(115, 155, 241);text-align: center;align-items: center;">
+            <div class="col-2"></div>
+            <div class="col-10">
+
+                <!-- Links -->
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gioithieu.html">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shopping.html">Sản Phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tintuc.html">Tin tức</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hotro.html">Hỗ trợ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sitemap.html">Site map</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+        <div class="container mt-5">
+            <h1 class="text-center mb-4" style="color: blue;">Giỏ Hàng Của Bạn</h1>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="color: tomato;">Chọn</th>
+                        <th style="color: tomato;">Sản Phẩm</th>
+                        <th style="color: tomato;">Giá</th>
+                        <th style="color: tomato;">Số Lượng</th>
+                        <th style="color: tomato;">Thao Tác</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items">
+                    <!-- Sản phẩm trong giỏ hàng sẽ được thêm ở đây bằng JavaScript -->
+                </tbody>
+            </table>
+
+            <div class="text-end">
+                <h4 style="color: rgb(226, 48, 29);">Tổng cộng: <span id="total-price">0</span>đ</h4>
+            </div>
+
+            <h3 class="mt-4" style="color: blue;">Thông Tin Người Mua</h3>
+            <form id="checkout-form">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Tên:</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Địa chỉ:</label>
+                    <input type="text" class="form-control" id="address" required>
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Số điện thoại:</label>
+                    <input type="text" class="form-control" id="phone" required>
+                </div>
+                <div class="d-flex justify-content-between mt-3">
+                    <button type="button" class="btn btn-secondary" onclick="continueShopping()">Tiếp Tục Mua Sắm</button>
+                    <button type="button" class="btn btn-primary" onclick="submitOrder()">Thanh Toán</button>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            // Lấy giỏ hàng từ localStorage
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            function renderCart() {
+                const cartItems = document.getElementById('cart-items');
+                cartItems.innerHTML = '';
+
+                cart.forEach((item, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td><input type="checkbox" class="item-checkbox" data-index="${index}" onchange="updateTotalPrice()"></td>
+                        <td>${item.name}</td>
+                        <td>${parseInt(item.price).toLocaleString()}đ</td>
+                        <td>
+                            <input type="number" min="1" value="${item.quantity || 1}" class="quantity-input" 
+                                   data-index="${index}" onchange="updateQuantity(${index}, this.value)">
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" onclick="removeItem(${index})">Xóa</button>
+                        </td>
+                    `;
+                    cartItems.appendChild(row);
+                });
+
+                updateTotalPrice();
+            }
+
+            function updateQuantity(index, quantity) {
+                cart[index].quantity = parseInt(quantity);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateTotalPrice();
+            }
+
+            function removeItem(index) {
+                cart.splice(index, 1);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                renderCart();
+            }
+
+            function updateTotalPrice() {
+                const checkboxes = document.querySelectorAll('.item-checkbox');
+                let total = 0;
+
+                checkboxes.forEach((checkbox, index) => {
+                    if (checkbox.checked) {
+                        const quantity = cart[index].quantity || 1;
+                        total += parseInt(cart[index].price) * quantity;
+                    }
+                });
+
+                document.getElementById('total-price').textContent = total.toLocaleString();
+            }
+
+            function continueShopping() {
+                window.location.href = 'shopping.html';
+            }
+
+            function submitOrder() {
+                // Kiểm tra trạng thái đăng nhập
+                const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'; // Kiểm tra trạng thái đăng nhập
+
+                if (!isLoggedIn) {
+                    alert("Bạn phải đăng nhập trước khi thanh toán.");
+                    window.location.href = 'login.html'; // Chuyển đến trang đăng nhập
+                    return;
+                }
+
+                const name = document.getElementById('name').value;
+                const address = document.getElementById('address').value;
+                const phone = document.getElementById('phone').value;
+
+                const namePattern = /^[A-Za-zÀ-ỹ\s]+$/;
+                const phonePattern = /^[0-9]+$/;
+
+                if (!name || !address || !phone) {
+                    alert("Vui lòng điền đầy đủ thông tin.");
+                    return;
+                }
+                if (!namePattern.test(name)) {
+                    alert("Tên không được chứa ký tự đặc biệt.");
+                    return;
+                }
+                if (!phonePattern.test(phone)) {
+                    alert("Số điện thoại chỉ được chứa số.");
+                    return;
+                }
+
+                alert("Cảm ơn bạn đã tin tưởng Vua2hand ^^ Shop sẽ liên hệ xác nhận đơn với bạn sớm nhất");
+                localStorage.removeItem('cart');
+                window.location.href = 'shopping.html';
+            }
+
+            renderCart();
+        </script>
+
+        <div class="row" style="padding-top: 20px;">
+
+        </div>
+        <div class="row" style="background-color:  rgb(101, 86, 240);color: rgb(229, 247, 247);padding-left: 50px;padding-top:20px ;">
+            <div class="col-4">
+                <h3>Thông tin liên hệ</h3>
+                <p>40/39 Lê Thị Hồng p17 Gò Vấp</p>
+                <p>Sđt:012345678</p>
+                <p>Email:Vua2hand@gmail.com</p>
+                <img src="/img/face.svg" alt="" style="width: 10%;">
+                <img src="/img/zalo.webp" alt="" style="width: 10%;padding-left: 5px;padding-top: 5px;">
+                <img src="/img/phone.png" alt="" style="width: 10%; padding-left: 5px;padding-top: 5px;">
+            </div>
+            <div class="col-4">
+                <H3>Hỗ trợ khách hàng</H3>
+                <p>Giới thiệu</p>
+                <p>Giỏ hàng</p>
+                <p>Hướng dẫn mua hàng</p>
+                <p>Hướng dẫn thanh toán</p>
+            </div>
+            <div class="col-4">
+                <h3>Chính sách</h3>
+                <p>Chính sách bảo hành</p>
+                <p>Chính sách đổi trả, hoàn tiền</p>
+                <p>Quy chế hoạt động</p>
+                <p>Chính sách bảo mật</p>
+            </div>
+        </div>
+        <div class="row" style="background-color: rgb(2, 22, 41);color: coral;">
+            <p style="text-align: center;padding-top: 10px;">Địa chỉ:40/39 Lê Thị Hồng p17 Gò Vấp </p>
+        </div>
+    </div>
+</body>
+
+</html>
